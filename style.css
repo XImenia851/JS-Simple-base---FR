@@ -1,0 +1,66 @@
+:root {
+    --bg-color: #f0f2f5;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --text-color: #333;
+    --accent: #6c5ce7;
+}
+
+/* Version sombre si on active la classe .dark-mode sur le body */
+body.dark-mode {
+    --bg-color: #2d3436;
+    --card-bg: rgba(0, 0, 0, 0.4);
+    --text-color: #dfe6e9;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.4s ease; /* Transition douce pour le dark mode */
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Style du Menu Hamburger */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--accent);
+    transition: 0.3s;
+}
+
+/* Menu qui glisse (Mobile) */
+.nav-links {
+    position: fixed;
+    right: -100%;
+    top: 60px;
+    flex-direction: column;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px); /* Effet "verre" */
+    width: 200px;
+    height: 100vh;
+    transition: 0.5s;
+}
+
+.nav-links.active {
+    right: 0; /* Il glisse vers la gauche pour apparaître */
+}
+
+/* Le bouton stylé */
+#magic-btn {
+    padding: 12px 24px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+}
