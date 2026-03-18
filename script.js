@@ -28,6 +28,21 @@ btn.addEventListener('click', () => {
 
 // 4. Toggle Mode Sombre
 const themeToggle = document.getElementById('theme-toggle');
+const savedTheme = localStorage.getItem('theme');
+
+if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    themeToggle.textContent = "Mode Clair";
+}
+
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
+
+    if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+        themeToggle.textContent = "Mode Clair";
+    } else {
+        localStorage.setItem('theme', 'light'); // CORRIGÉ
+        themeToggle.textContent = "Mode Sombre";
+    }
 });

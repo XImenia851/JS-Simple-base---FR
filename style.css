@@ -64,3 +64,43 @@ body {
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
 }
+
+/* État de base : le menu est à droite, hors de l'écran */
+.nav-links {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    height: 100vh;
+    width: 250px;
+    background: var(--card-bg);
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    transition: 0.5s ease; /* C'est ce qui fait l'effet de glisse */
+    z-index: 100;
+}
+
+/* État quand le JS ajoute la classe .active */
+.nav-links.active {
+    right: 0; /* Il revient à sa position visible */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--card-bg); /* Utilise la couleur semi-transparente */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* On s'assure que le bouton de thème est bien visible */
+#theme-toggle {
+    user-select: none; /* Évite de sélectionner le texte en cliquant vite */
+    transition: transform 0.2s;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.2); /* Petit effet de zoom au survol */
+}
