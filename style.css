@@ -12,6 +12,21 @@ body.dark-mode {
     --text-color: #dfe6e9;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre le bouton et le texte */
+    justify-content: center;
+    min-height: 70vh; /* Pour qu'il soit bien au milieu de la hauteur */
+}
+
+#magic-btn {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    /* ... garde ton style précédent ... */
+}
+
 body {
     font-family: 'Segoe UI', sans-serif;
     background: var(--bg-color);
@@ -22,19 +37,29 @@ body {
     overflow: hidden;
 }
 
-/* Style du Menu Hamburger */
+/* On crée une boîte qui ne dépasse jamais une certaine largeur */
+.container {
+    max-width: 1000px; /* Largeur idéale pour un dashboard */
+    margin: 0 auto;    /* Le secret pour CENTRER horizontalement */
+    padding: 40px 20px;
+    text-align: center; /* Pour centrer le texte et le bouton */
+}
+
 .hamburger {
-    display: flex;
-    flex-direction: column;
+    display: flex;          /* Pour aligner les 3 barres */
+    flex-direction: column; /* Les unes sous les autres */
     cursor: pointer;
-    gap: 5px;
+    gap: 5px;               /* Espace entre les barres */
+    z-index: 1000;          /* Pour qu'il soit au-dessus de tout */
 }
 
 .hamburger span {
-    width: 25px;
-    height: 3px;
-    background: var(--accent);
-    transition: 0.3s;
+    display: block;         /* Très important pour que la largeur s'applique */
+    width: 30px;            /* Largeur des barres */
+    height: 4px;            /* Épaisseur des barres */
+    background-color: var(--accent); /* Ta couleur violette */
+    border-radius: 10px;
+    transition: 0.3s;       /* Pour de futures animations */
 }
 
 /* Menu qui glisse (Mobile) */
@@ -54,7 +79,7 @@ body {
     right: 0; /* Il glisse vers la gauche pour apparaître */
 }
 
-/* Le bouton stylé */
+/* Le bouton magic */
 #magic-btn {
     padding: 12px 24px;
     background: var(--accent);
@@ -67,40 +92,39 @@ body {
 
 /* État de base : le menu est à droite, hors de l'écran */
 .nav-links {
+    list-style: none;
     position: fixed;
-    right: -100%;
+    right: -100%; /* Complètement caché à droite par défaut */
     top: 0;
     height: 100vh;
     width: 250px;
     background: var(--card-bg);
+    backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
-    padding-top: 80px;
-    transition: 0.5s ease; /* C'est ce qui fait l'effet de glisse */
-    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    transition: 0.4s ease-in-out;
+    margin: 0;
+    z-index: 99;
 }
 
-/* État quand le JS ajoute la classe .active */
 .nav-links.active {
-    right: 0; /* Il revient à sa position visible */
+    right: 0; /* Le menu glisse vers l'intérieur de l'écran */
 }
 
 .navbar {
+    max-width: 1000px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background: var(--card-bg); /* Utilise la couleur semi-transparente */
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 20px;
 }
 
 /* On s'assure que le bouton de thème est bien visible */
 #theme-toggle {
     user-select: none; /* Évite de sélectionner le texte en cliquant vite */
     transition: transform 0.2s;
-}
-
-#theme-toggle:hover {
-    transform: scale(1.2); /* Petit effet de zoom au survol */
 }
